@@ -1,15 +1,17 @@
 ;; General configuration
 (setq inhibit-startup-message t)
 
-(package-initialize)
-
 ;; Explanation here https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil
 (require 'package)
 
 ;; https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/
+(package-initialize)
 (setq package-enable-at-startup nil)
+
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
+
+
 
 ;; For modularizing emacs configuration
 ;; from https://stackoverflow.com/questions/2079095/how-to-modularize-an-emacs-configuration
@@ -26,16 +28,20 @@
   (load-file (expand-file-name file user-init-dir)))
 
 
+
 ;; From http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
 	(package-refresh-contents)
 	(package-install 'use-package))
 
+
+
 ;; List of included lisp files.
 ;; See the each file for explanatory comments.
 (load-user-file "packages.el")
 (load-user-file "mail.el")
+
 
 
 (custom-set-variables
