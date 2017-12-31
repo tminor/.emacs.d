@@ -1,6 +1,6 @@
 * Things to do in the near future
 
-- Re-wrote configuration files as =org= files.
+- Re-write configuration files as =org= files.
 - References:
   - [[https://emacs.stackexchange.com/questions/3143/can-i-use-org-mode-to-structure-my-emacs-or-other-el-configuration-file][Emacs StackExchange]]
   - [[https://github.com/correl/dotfiles/blob/master/.emacs.d/emacs.org][an example on GitHub]]
