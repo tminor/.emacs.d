@@ -34,6 +34,7 @@
 ;; See the each file for explanatory comments.
 (load-user-file "packages.el")
 (load-user-file "mail.el")
+(load-user-file "org.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

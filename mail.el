@@ -4,7 +4,6 @@
 
 (autoload 'notmuch "notmuch" "notmuch mail" t)
 
-
 ;; Use msmtp to send mail
 (setq message-send-mail-function 'message-send-mail-with-sendmail)
 (setq sendmail-program "/usr/local/bin/msmtp")
@@ -13,7 +12,6 @@
 ;; the outgoing email
 (setq message-sendmail-extra-arguments '("--read-envelope-from"))
 (setq message-sendmail-f-is-evil 't)
-
 
 ;; Some notmuch key bindings magic for
 ;; tagging mail with ease.
@@ -35,7 +33,7 @@
    ;; '("s" "+notmuch::patch" "-notmuch::obsolete" "-notmuch::needs-review" "-notmuch::moreinfo" "+notmuch::stale")
    ;; '("t" "+notmuch::patch" "-notmuch::needs-review" "+notmuch::trivial")
    ;; '("w" "+notmuch::patch" "+notmuch::wip" "-notmuch::needs-review")))
-     '("m" "+me")))
+     '("t" "+me")))
 
 (defun notmuch-show-apply-tag-macro (key)
   (interactive "k")
