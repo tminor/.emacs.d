@@ -5,8 +5,10 @@
 ;; https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/
 (package-initialize)
 (setq package-enable-at-startup nil)
+;; NOTE: For Windows, you'll need GnuTLS DLLs. Instructions found below:
+;; http://חנוך.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+     '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Enable linum-mode universally.
 (global-linum-mode 1)
@@ -30,6 +32,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Buffer management.
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+
 ;; List of included lisp files.
 ;; See the each file for explanatory comments.
 (load-user-file "packages.el")
@@ -44,10 +50,10 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
+    ("bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
  '(package-selected-packages
    (quote
-    (ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
+    (hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
