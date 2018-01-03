@@ -1,5 +1,4 @@
 
-
 * Package Management
 
 ** Initialization stuff
@@ -44,6 +43,9 @@ This enables the MELPA repository on start up.
   
 ** Modularize Init Files
 
+NOTE: Once all config files are properly formatted as =org= files,
+this section can go away.
+
 We want to keep things organized and avoid Emacs bankruptcy!
 
 The below snippit enables organizing init files in a modularized fashion.
@@ -71,7 +73,9 @@ If you need descriptions for any of these, just check each file for more info.
 #+BEGIN_SRC emacs-lisp
 (load-user-file "packages.el")
 (load-user-file "mail.el")
-(load-user-file "org.el")
+(org-babel-load-file
+ (expand-file-name "org.org"
+                   user-emacs-directory))
 #+END_SRC
 
 * Modifications to Core Emacs Functionality
