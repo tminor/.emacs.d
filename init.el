@@ -1,46 +1,9 @@
-;; General configuration
-(setq inhibit-startup-message t)
-;; Explanation here https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil
-(require 'package)
-;; https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/
-(package-initialize)
-(setq package-enable-at-startup nil)
-;; NOTE: For Windows, you'll need GnuTLS DLLs. Instructions found below:
-;; http://חנוך.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html
-(add-to-list 'package-archives
-     '("melpa" . "https://melpa.org/packages/") t)
-
-;; Enable linum-mode universally.
-(global-linum-mode 1)
-
-;; For modularizing emacs configuration
-;; from https://stackoverflow.com/questions/2079095/how-to-modularize-an-emacs-configuration
-(defconst user-init-dir
-  (cond ((boundp 'user-emacs-directory)
-         user-emacs-directory)
-        ((boundp 'user-init-directory)
-         user-init-directory)
-        (t "~/.emacs.d/")))
-(defun load-user-file (file)
-  (interactive "f")
-  "Load a file in current user's configuration directory"
-  (load-file (expand-file-name file user-init-dir)))
-
-;; From http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; Buffer management.
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
-;; List of included lisp files.
-;; See the each file for explanatory comments.
-(load-user-file "packages.el")
-(load-user-file "mail.el")
-(load-user-file "org.el")
+;; Enable init files in org format.
+;; From https://emacs.stackexchange.com/questions/3143/can-i-use-org-mode-to-structure-my-emacs-or-other-el-configuration-file
+(require 'org)
+(org-babel-load-file
+ (expand-file-name "settings.org"
+                   user-emacs-directory))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

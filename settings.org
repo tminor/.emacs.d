@@ -1,0 +1,104 @@
+
+
+* Package Management
+
+** Initialization stuff
+
+You can find an explanation for the following [[https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil][here]].
+
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+#+END_SRC
+
+Explanation [[https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/][here]].
+
+#+BEGIN_SRC emacs-lisp
+(package-initialize)
+(setq package-enable-at-startup nil)
+#+END_SRC
+
+** =use-package= Bootsrap
+
+We use =use-package= for package management and configuration. It's like 
+Puppet for Emacs! See =package.el= for more information.
+
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+#+END_SRC
+
+** Repository Management
+
+NOTE: For Windows, you'll need GnuTLS DLLs. (Emacs for Windows isn't built with TLS support.)
+Instructions found [[http://חנוך.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html][here]].
+
+This enables the MELPA repository on start up.
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'package-archives
+     '("melpa" . "https://melpa.org/packages/") t)
+#+END_SRC
+
+* Init File Structure
+  
+** Modularize Init Files
+
+We want to keep things organized and avoid Emacs bankruptcy!
+
+The below snippit enables organizing init files in a modularized fashion.
+This is nice because we can avoid 1000+ line Emacs config and find pertinent
+information readily. I found inspiration [[https://github.com/larstvei/dot-emacs][here]] and more [[https://emacs.stackexchange.com/questions/3143/can-i-use-org-mode-to-structure-my-emacs-or-other-el-configuration-file][here]].
+
+#+BEGIN_SRC emacs-lisp
+(defconst user-init-dir
+  (cond ((boundp 'user-emacs-directory)
+         user-emacs-directory)
+        ((boundp 'user-init-directory)
+         user-init-directory)
+        (t "~/.emacs.d/")))
+
+(defun load-user-file (file)
+  (interactive "f")
+  "Load a file in current user's configuration directory"
+  (load-file (expand-file-name file user-init-dir)))
+#+END_SRC
+
+* Init File Include Statements
+
+If you need descriptions for any of these, just check each file for more info.
+
+#+BEGIN_SRC emacs-lisp
+(load-user-file "packages.el")
+(load-user-file "mail.el")
+(load-user-file "org.el")
+#+END_SRC
+
+* Modifications to Core Emacs Functionality
+
+Here we'll change the default behaviors of Emacs.
+
+** Buffer Management
+
+=ibuffer= allows for buffer management from a nice menu.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+#+END_SRC
+
+** Text Editing
+
+I like line numbers, so I enable them globally.
+
+#+BEGIN_SRC emacs-lisp
+(global-linum-mode 1)
+#+END_SRC
+
+** Startup
+
+Who likes the startup message?
+
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+#+END_SRC
