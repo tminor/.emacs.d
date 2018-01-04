@@ -1,0 +1,61 @@
+
+* Basics
+
+Tell Emacs about the path to =notmuch=.
+
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+#+END_SRC
+
+And load =notmuch=.
+
+#+BEGIN_SRC emacs-lisp
+(autoload 'notmuch "notmuch" "notmuch mail" t)
+#+END_SRC
+
+* Sending
+
+We use =msmtp= to send mail.
+
+#+BEGIN_SRC emacs-lisp
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+(setq sendmail-program "/usr/local/bin/msmtp")
+#+END_SRC
+
+* Key Bindings
+
+I haven't gotten the below to work, but the point is to use
+the =k= key to invoke a menu that lists hot keys for tagging.
+
+#+BEGIN_SRC emacs-lisp
+(eval-after-load 'notmuch-show
+  '(define-key notmuch-show-mode-map "`" 'notmuch-show-apply-tag-macro))
+
+(setq notmuch-show-tag-macro-alist
+  (list
+   ;; Some examples:
+   ;; '("m" "+notmuch::patch" "+notmuch::moreinfo" "-notmuch::needs-review") 
+   ;; '("n" "+notmuch::patch" "+notmuch::needs-review" "-notmuch::pushed")
+   ;; '("o" "+notmuch::patch" "+notmuch::obsolete"
+   ;;       "-notmuch::needs-review" "-notmuch::moreinfo")
+   ;; '("p" "-notmuch::pushed" "-notmuch::needs-review"
+   ;;   "-notmuch::moreinfo" "+pending")
+   ;; '("P" "-pending" "-notmuch::needs-review" "-notmuch::moreinfo" "+notmuch::pushed")
+   ;; '("r" "-notmuch::patch" "+notmuch::review")
+   ;; '("s" "+notmuch::patch" "-notmuch::obsolete" "-notmuch::needs-review" "-notmuch::moreinfo" "+notmuch::stale")
+   ;; '("t" "+notmuch::patch" "-notmuch::needs-review" "+notmuch::trivial")
+   ;; '("w" "+notmuch::patch" "+notmuch::wip" "-notmuch::needs-review")))
+     '("t" "+me")))
+#+END_SRC
+
+And the key for the tagging menu defined:
+
+#+BEGIN_SRC emacs-lisp
+(defun notmuch-show-apply-tag-macro (key)
+  (interactive "k")
+  (let ((macro (assoc key notmuch-show-tag-macro-alist)))
+    (apply 'notmuch-show-tag-message (cdr macro))))
+#+END_SRC
+
+For more Emacs =notmuch= customizaton, see [[https://wwwtech.de/articles/2016/jul/my-personal-mail-setup][this]] nice blog post.

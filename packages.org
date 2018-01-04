@@ -1,0 +1,83 @@
+
+
+* Intro
+
+This file is meant for any packages we decide to add as we embark upon
+our Emacs journey. If any package's =:config= declaration begins to 
+expand beyond a few lines, it may be worth breaking that package's
+configuration out to its own eponymous file.
+
+* Evil Mode
+
+I'm accustomed to =vi= style text editing, so we make Emacs like
+=vi= with =evil-mode=.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1))
+#+END_SRC
+
+* Window, Buffer, and Frame Management
+
+** Window
+
+=ace-window= allows for easy window navigation. We change the window keys
+to the home row instead of the number row. We also assign =M-p= to invoke
+=ace-window= mode.
+
+#+BEGIN_SRC emacs-lisp
+(use-package ace-window
+  :ensure t
+  :config
+  ;; ace-window meta key, change window keys to home row
+  (global-set-key (kbd "M-p") 'ace-window)
+  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+#+END_SRC
+
+** Ivy
+
+Ivy is a generic completion mechanism for Emacs that enables nice completion
+functionality to built in commands. It contains Swiper and Counsel as well.
+I opted for Ivy over Helm as it seems to be the  *cool* way to do things.
+Guide [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][here]].
+
+#+BEGIN_SRC emacs-lisp
+;; https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t
+            ivy-count-format "%d/%d "))
+#+END_SRC
+
+* Miscellaneous
+
+** Try
+
+Enables temporarily downloading and installing packages for the purpose
+of test driving. I discovered it [[http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU][here]].
+
+#+BEGIN_SRC emacs-lisp
+;; From http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU
+(use-package try
+  :ensure t)
+#+END_SRC
+
+** Which Key
+
+This a nice package that helps Emacs neophytes such as myself. It lists
+possivle key chord completion given at least one key press.
+I found out about it [[http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU][here]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t 
+  :config
+  (which-key-mode))
+#+END_SRC
+
+
+

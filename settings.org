@@ -71,9 +71,15 @@ information readily. I found inspiration [[https://github.com/larstvei/dot-emacs
 If you need descriptions for any of these, just check each file for more info.
 
 #+BEGIN_SRC emacs-lisp
-(load-user-file "packages.el")
-(load-user-file "mail.el")
 (org-babel-load-file
+ (expand-file-name "packages.org"
+                   user-emacs-directory))
+
+(org-babel-load-file
+ (expand-file-name "packages.org"
+                   user-emacs-directory))
+
+(org-babel-load-file 
  (expand-file-name "org.org"
                    user-emacs-directory))
 #+END_SRC
