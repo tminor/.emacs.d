@@ -39,33 +39,6 @@ This enables the MELPA repository on start up.
      '("melpa" . "https://melpa.org/packages/") t)
 #+END_SRC
 
-* Init File Structure
-  
-** Modularize Init Files
-
-NOTE: Once all config files are properly formatted as =org= files,
-this section can go away.
-
-We want to keep things organized and avoid Emacs bankruptcy!
-
-The below snippit enables organizing init files in a modularized fashion.
-This is nice because we can avoid 1000+ line Emacs config and find pertinent
-information readily. I found inspiration [[https://github.com/larstvei/dot-emacs][here]] and more [[https://emacs.stackexchange.com/questions/3143/can-i-use-org-mode-to-structure-my-emacs-or-other-el-configuration-file][here]].
-
-#+BEGIN_SRC emacs-lisp
-(defconst user-init-dir
-  (cond ((boundp 'user-emacs-directory)
-         user-emacs-directory)
-        ((boundp 'user-init-directory)
-         user-init-directory)
-        (t "~/.emacs.d/")))
-
-(defun load-user-file (file)
-  (interactive "f")
-  "Load a file in current user's configuration directory"
-  (load-file (expand-file-name file user-init-dir)))
-#+END_SRC
-
 * Init File Include Statements
 
 If you need descriptions for any of these, just check each file for more info.
