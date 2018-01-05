@@ -1,6 +1,7 @@
 # Ignore dirs
 elpa/
 auto-save-list/
+.archive/
 
 ### Emacs ###
 # -*- mode: gitignore; -*-

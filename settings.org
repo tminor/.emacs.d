@@ -49,7 +49,7 @@ If you need descriptions for any of these, just check each file for more info.
                    user-emacs-directory))
 
 (org-babel-load-file
- (expand-file-name "packages.org"
+ (expand-file-name "mail.org"
                    user-emacs-directory))
 
 (org-babel-load-file 
@@ -76,7 +76,9 @@ I like line numbers, so I enable them globally.
 
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
+(setq linum-relative-format "%4s")
 #+END_SRC
+
 
 ** Startup
 

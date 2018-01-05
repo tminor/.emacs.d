@@ -71,10 +71,42 @@ We also enable some nice quality of life settings. Read more [[https://blog.aaro
 
 #+BEGIN_SRC emacs-lisp
 (setq org-refile-targets
-      '((nil :maxlevel . 9)
-	(org-agenda-files :maxlevel . 9)))
+      '((nil :maxlevel . 1)
+	(org-agenda-files :maxlevel . 1)))
 
 (setq org-outline-path-complete-in-steps nil)
 
-(setq org-refile-use-outline-path t)
+(setq org-refile-use-outline-path 'full-file-path)
+#+END_SRC
+
+* Source Blocks
+
+#+BEGIN_SRC emacs-lisp
+(setq org-src-fontify-natively t)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defface org-block-begin-line
+    '((t (:underline "#6CA0A3" :foreground "#DCDCCC" :background "#5F5F5F")))
+    "Face used for the line delimiting the begin of source blocks.")
+
+;; Doesn't work, see note.
+(defface org-block-background
+    '((t (:background "#4F4F4F")))
+    "Face used for the source block background.")
+
+(defface org-block-end-line
+    '((t (:overline "#6CA0A3" :foreground "#DCDCCC" :background "#5F5F5F")))
+    "Face used for the line delimiting the end of source blocks.")
+#+END_SRC
+
+NOTE: =org-block-background= no longer works; see [[https://emacs.stackexchange.com/questions/14824/org-block-background-font-not-having-effect][here]] for more info.
+
+* Task States
+
+Documentation [[https://orgmode.org/manual/Workflow-states.html][here]].
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO" "|" "DONE" "CANCELLED")))
 #+END_SRC
