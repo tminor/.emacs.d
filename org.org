@@ -64,6 +64,13 @@ that contain our main =org= files.
 			     (concat org-base-directory "personal")))
 #+END_SRC
 
+The global TODO list helps to see all open, unscheduled tasks. Once we
+schedule a task, hiding them helps to keep the global list cleaner.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-todo-ignore-scheduled t)
+#+END_SRC
+
 * =org-refile=
 
 For =org-refile=, we want our refile targets to be our main =org= files.
@@ -108,5 +115,17 @@ Documentation [[https://orgmode.org/manual/Workflow-states.html][here]].
 
 #+BEGIN_SRC emacs-lisp
 (setq org-todo-keywords
-  '((sequence "TODO" "|" "DONE" "CANCELLED")))
+  '((sequence "TODO(t)" "|" "DONE(d/!)" "CANCELLED")))
+#+END_SRC
+
+Using =org-habits= helps to track repeated tasks.
+
+#+BEGIN_SRC emacs-lisp
+(require 'org-habit)
+#+END_SRC
+
+Enable log changes in =LOGBOOK= drawer.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-log-into-drawer t)
 #+END_SRC
