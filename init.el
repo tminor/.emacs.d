@@ -20,14 +20,13 @@
  '(custom-enabled-themes (quote (material)))
  '(custom-safe-themes
    (quote
-    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "be0b6c632aca938e4fae0cef244f50516d207d186408eee29692577bda29e6cf" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
- '(nrepl-message-colors
+    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
+ '(org-modules
    (quote
-    ("#FF5454" "#F29000" "#FFFA87" "#00CF16" "#73FF82" "#00EBAA" "#A9FFF9" "#9A00CD")))
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (magit material-theme rainbow-mode hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
- '(pdf-view-midnight-colors (quote ("#E6E3E8" . "#2C2C2C"))))
+    (rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

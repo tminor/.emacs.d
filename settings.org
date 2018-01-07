@@ -76,9 +76,15 @@ I like line numbers, so I enable them globally.
 
 #+BEGIN_SRC emacs-lisp
 (global-linum-mode 1)
-(setq linum-relative-format "%4s")
 #+END_SRC
 
+Some color themes increase line number font sizes with =org-mode= headers
+and the fixed width of the line number column cuts it off. I found a post
+[[https://unix.stackexchange.com/questions/29786/font-size-issues-with-emacs-in-linum-mode/30087#30087][here]] that suggests a fix.
+
+#+BEGIN_SRC emacs-lisp
+(set-face-attribute 'linum nil :height 100)
+#+END_SRC
 
 ** Startup
 
