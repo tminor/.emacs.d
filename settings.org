@@ -3,7 +3,7 @@
 
 ** Initialization stuff
 
-You can find an explanation for the following [[https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil][here]].
+You can find an explanation for the following [[https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil][here]]. Ensure that Emacs's package management package is loaded.
 
 #+BEGIN_SRC emacs-lisp
 (require 'package)
@@ -18,8 +18,7 @@ Explanation [[https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableat
 
 ** =use-package= Bootsrap
 
-We use =use-package= for package management and configuration. It's like 
-Puppet for Emacs! See =package.el= for more information.
+We use =use-package= for package management and configuration. See =packages.org= for more information.
 
 #+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
@@ -32,7 +31,7 @@ Puppet for Emacs! See =package.el= for more information.
 NOTE: For Windows, you'll need GnuTLS DLLs. (Emacs for Windows isn't built with TLS support.)
 Instructions found [[http://חנוך.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html][here]].
 
-This enables the MELPA repository on start up.
+This snippet enables all necessary repositories on start up.
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives
@@ -84,6 +83,20 @@ and the fixed width of the line number column cuts it off. I found a post
 
 #+BEGIN_SRC emacs-lisp
 (set-face-attribute 'linum nil :height 100)
+#+END_SRC
+
+** Interface
+
+Disable the scroll bar by default.
+
+#+BEGIN_SRC emacs-lisp
+(toggle-scroll-bar -1)
+#+END_SRC
+
+I found a way to maximize the Emacs window on startup [[https://emacs.stackexchange.com/questions/2999/how-to-maximize-my-emacs-frame-on-start-up][here]].
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 #+END_SRC
 
 ** Startup
