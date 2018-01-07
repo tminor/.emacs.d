@@ -27,6 +27,15 @@ I found the following key bindings in the condensed Org manual.
 (global-set-key "\C-cb" 'org-iswitchb)
 #+END_SRC
 
+Store our favorite Org files in registers.
+
+=C-x r j <key>=
+
+#+BEGIN_SRC emacs-lisp
+(set-register ?p (cons 'file "~/org/personal/organizer.org"))
+(set-register ?w (cons 'file "~/org/work/organizer.org"))
+#+END_SRC
+
 * =org-capture=
 
 Specify the primary capture file (I only use one).
