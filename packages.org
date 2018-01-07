@@ -58,7 +58,6 @@ Guide [[https://writequit.org/denver-emacs/presentations/2017-04-11-ivy.html][he
 (use-package magit
   :ensure t)
 #+END_SRC
-
 * Miscellaneous
 
 ** Try
@@ -95,9 +94,29 @@ representation of colors.
   :ensure t)
 #+END_SRC
 
+* Language Specific
+
 ** Complete Any Mode
+
+General completion mechanism.
 
 #+BEGIN_SRC emacs-lisp
 (use-package company
   :ensure t)
+#+END_SRC
+
+** Python
+
+Python JEDI backend for =company-mode=.
+
+NOTE: Don't forget to install =virtualenv= (=$ pip install virtualenv=) and run =M-x jedi:install-server=.
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-jedi
+  :ensure t
+  :config
+    (defun my/python-mode-hook ()
+      (add-to-list 'company-backends 'company-jedi))
+
+    (add-hook 'python-mode-hook 'my/python-mode-hook))
 #+END_SRC
