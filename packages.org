@@ -105,7 +105,7 @@ General completion mechanism.
   :ensure t)
 #+END_SRC
 
-** Python
+*** Python
 
 Python JEDI backend for =company-mode=.
 
@@ -119,4 +119,19 @@ NOTE: Don't forget to install =virtualenv= (=$ pip install virtualenv=) and run 
       (add-to-list 'company-backends 'company-jedi))
 
     (add-hook 'python-mode-hook 'my/python-mode-hook))
+#+END_SRC
+
+*** Shell
+
+=company-shell= provides completion for fish and binaries found on =$PATH=.
+
+Find more documentation [[https://github.com/Alexander-Miller/company-shell][here]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package company-shell
+  :ensure t
+  :config
+    (add-to-list 'company-backends 
+                 '(company-shell company-shell-env company-fish-shell))
+    (setq company-shell-clean-manpage t))
 #+END_SRC
