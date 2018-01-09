@@ -25,6 +25,12 @@ We use =msmtp= to send mail.
 
 * Key Bindings
 
+Bind =notmuch= to =C-x /= globally.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x /") 'notmuch)
+#+END_SRC
+
 I haven't gotten the below to work, but the point is to use
 the =k= key to invoke a menu that lists hot keys for tagging.
 
