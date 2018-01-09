@@ -54,7 +54,9 @@ Define capture templates here. I found [[https://orgmode.org/manual/Capture-temp
                "* TODO %?\n%U\n%a\n")
               ("n" "note" entry (file (concat org-directory "/capture.org"))
                "* %? :NOTE:\n%U\n%a\n")
-              ("j" "Journal" entry (file+datetree (concat org-directory "/capture.org"))
+              ("p" "Personal Journal" entry (file+datetree (concat org-directory "/personal/journal.org"))
+               "* %?\n%U\n")
+              ("w" "Work Journal" entry (file+datetree (concat org-directory "/work/journal.org"))
                "* %?\n%U\n")
               )))
 #+END_SRC
