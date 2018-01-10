@@ -145,6 +145,13 @@ Enable log changes in =LOGBOOK= drawer.
 
 ** =org2jekyll=
 
+Write blog posts in =org-mode= and publish them to a Jekyll site with =org2jekyll=.
+
+Define the following variables:
+- =org2jekyll-source-directory=: The directory where =*.org= blog posts are stored.
+- =org2jekyll-jekyll-directory=: Path to a Jekyll site.
+- =org2jekyll-posts-dir=: The directory where Jekyll posts are stored.
+
 #+BEGIN_SRC emacs-lisp
 (use-package org2jekyll
   :ensure t
@@ -214,3 +221,9 @@ Enable log changes in =LOGBOOK= drawer.
 
                             ("web" :components ("images" "js" "css"))))))
 #+END_SRC
+
+** Creating a Blog Post
+
+1. Invoke =org2jekyll-create-draft=, select your layout and follow the prompts in the mini buffer.
+2. Write your post.
+3. Publish it with =org2jekyll-publish=.
