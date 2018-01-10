@@ -65,3 +65,18 @@ And the key for the tagging menu defined:
 #+END_SRC
 
 For more Emacs =notmuch= customizaton, see [[https://wwwtech.de/articles/2016/jul/my-personal-mail-setup][this]] nice blog post.
+
+* =notmuch=
+
+Some =notmuch= variables.
+
+** What to do when sending mail
+
+Use =notmuch-insert= to put sent mail in the specified directory and add the =sent= tag.
+
+#+BEGIN_SRC emacs-lisp
+(setq notmuch-fcc-dirs "gmail/Sent +sent -new"
+      notmuch-maildir-use-notmuch-insert t)
+#+END_SRC
+
+ 
