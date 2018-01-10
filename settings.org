@@ -16,16 +16,6 @@ Explanation [[https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableat
 (setq package-enable-at-startup nil)
 #+END_SRC
 
-** =use-package= Bootsrap
-
-We use =use-package= for package management and configuration. See =packages.org= for more information.
-
-#+BEGIN_SRC emacs-lisp
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-#+END_SRC
-
 ** Repository Management
 
 NOTE: For Windows, you'll need GnuTLS DLLs. (Emacs for Windows isn't built with TLS support.)
@@ -36,6 +26,16 @@ This snippet enables all necessary repositories on start up.
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives
      '("melpa" . "https://melpa.org/packages/") t)
+#+END_SRC
+
+** =use-package= Bootsrap
+
+We use =use-package= for package management and configuration. See =packages.org= for more information.
+
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 #+END_SRC
 
 * Init File Include Statements
