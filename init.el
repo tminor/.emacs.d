@@ -20,13 +20,67 @@
  '(custom-enabled-themes (quote (material)))
  '(custom-safe-themes
    (quote
-    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
+    ("554b7f0439155d6eb648d4837ef03902f51124cacee021217e76f39e9dd314c2" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
+ '(jdee-db-active-breakpoint-face-colors (cons "#2b2a27" "#ff5d38"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#2b2a27" "#98be65"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#2b2a27" "#3f444a"))
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+ '(org-publish-project-alist
+   (\`
+    (("default" :base-directory
+      (\,
+       (org2jekyll-input-directory))
+      :base-extension "org" :publishing-directory
+      (\,
+       (org2jekyll-output-directory))
+      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
+     ("post" :base-directory
+      (\,
+       (org2jekyll-input-directory))
+      :base-extension "org" :publishing-directory
+      (\,
+       (org2jekyll-output-directory org2jekyll-jekyll-posts-dir))
+      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link href='/images/fav.png' rel='shortcut icon'>
+                                            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
+     ("images" :base-directory
+      (\,
+       (org2jekyll-input-directory "img"))
+      :base-extension "jpg\\|gif\\|png" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "img"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("js" :base-directory
+      (\,
+       (org2jekyll-input-directory "js"))
+      :base-extension "js" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "js"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("css" :base-directory
+      (\,
+       (org2jekyll-input-directory "css"))
+      :base-extension "css\\|el" :publishing-directory
+      (\,
+       (org2jekyll-output-directory "css"))
+      :publishing-function org-publish-attachment :recursive t)
+     ("web" :components
+      ("images" "js" "css")))))
+ '(org2jekyll-blog-author "tminor" nil (org2jekyll))
+ '(org2jekyll-jekyll-directory (expand-file-name "~/blog") nil (org2jekyll))
+ '(org2jekyll-jekyll-drafts-dir "" nil (org2jekyll))
+ '(org2jekyll-jekyll-posts-dir "_posts/" nil (org2jekyll))
+ '(org2jekyll-source-directory (expand-file-name "~/org/blog") nil (org2jekyll))
  '(package-selected-packages
    (quote
-    (rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
+    (hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
