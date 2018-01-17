@@ -52,8 +52,43 @@ If you need descriptions for any of these, just check each file for more info.
                    user-emacs-directory))
 
 (org-babel-load-file 
- (expand-file-name "org.org"
+ (expand-file-name "org-mode.org"
                    user-emacs-directory))
+
+(org-babel-load-file 
+ (expand-file-name "hydra.org"
+                   user-emacs-directory))
+#+END_SRC
+
+* shell-mode
+
+Reference for everything below found [[http://manuel-uberti.github.io/emacs/2017/10/07/m-x-shell/][here]].
+
+Set =/bin/bash= as the default shell.
+
+#+BEGIN_SRC emacs-lisp
+(setq explicit-shell-file-name "/bin/bash")
+#+END_SRC
+
+Better history.
+
+#+BEGIN_SRC emacs-lisp
+(unbind-key "C-c C-l" shell-mode-map)
+(bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
+#+END_SRC
+
+Full window when invoking =shell-mode=.
+
+#+BEGIN_SRC emacs-lisp
+(setq
+ display-buffer-alist
+ `(
+   ;; … other stuff …
+   (,(rx bos "*shell")
+    (display-buffer-same-window)
+    (reusable-frames . nil))
+   ;; … other stuff …
+  ))
 #+END_SRC
 
 * Modifications to Core Emacs Functionality
