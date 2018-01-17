@@ -1,0 +1,229 @@
+
+* Layout
+
+Use bullets instead of Org's standard stars. Found [[http://cestlaz.github.io/posts/using-emacs-2-org/#.Wb1EQY4pCfU][here]].
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+I like indentation by default. I find it easier to read.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-startup-indented t)
+#+END_SRC
+
+* Key Bindings
+
+I found the following key bindings in the condensed Org manual.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
+#+END_SRC
+
+Store our favorite Org files in registers.
+
+=C-x r j <key>=
+
+#+BEGIN_SRC emacs-lisp
+(set-register ?p (cons 'file "~/org/personal/organizer.org"))
+(set-register ?w (cons 'file "~/org/work/organizer.org"))
+#+END_SRC
+
+* =org-capture=
+
+Specify the primary capture file (I only use one).
+
+#+BEGIN_SRC emacs-lisp
+(setq org-default-notes-file (concat org-directory "/capture.org"))
+#+END_SRC
+
+** Capture Templates
+
+Define capture templates here. I found [[https://orgmode.org/manual/Capture-templates.html][the manual]] to be pretty helpful.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-capture-templates
+      (quote (("t" "todo" entry (file (concat org-directory "/capture.org"))
+               "* TODO %?\n%U\n%a\n")
+              ("n" "note" entry (file (concat org-directory "/capture.org"))
+               "* %? :NOTE:\n%U\n%a\n")
+              ("p" "Personal Journal" entry (file+datetree (concat org-directory "/personal/journal.org"))
+               "* %?\n%U\n")
+              ("w" "Work Journal" entry (file+datetree (concat org-directory "/work/journal.org"))
+               "* %?\n%U\n")
+              )))
+#+END_SRC
+
+* =org-agenda=
+
+I found a great =org-mode= configuration file [[https://github.com/kapilreddy/dotemacs/blob/master/configurations/org-mode-config.el][here]]; it defines a
+custom variable (=org-base-directory=) that we can change to whatever
+we want. We then use =org-agenda-files= to select a =list= of directories
+that contain our main =org= files.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-base-directory "~/org/")
+
+(setq org-agenda-files (list (concat org-base-directory "work")
+			     (concat org-base-directory "personal")))
+#+END_SRC
+
+The global TODO list helps to see all open, unscheduled tasks. Once we
+schedule a task, hiding them helps to keep the global list cleaner.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-todo-ignore-scheduled t)
+#+END_SRC
+
+* =org-refile=
+
+For =org-refile=, we want our refile targets to be our main =org= files.
+We also enable some nice quality of life settings. Read more [[https://blog.aaronbieber.com/2017/03/19/organizing-notes-with-refile.html][here]].
+
+#+BEGIN_SRC emacs-lisp
+(setq org-refile-targets
+      '((nil :maxlevel . 1)
+	(org-agenda-files :maxlevel . 1)))
+
+(setq org-outline-path-complete-in-steps nil)
+
+(setq org-refile-use-outline-path 'full-file-path)
+#+END_SRC
+
+* Source Blocks
+
+#+BEGIN_SRC emacs-lisp
+(setq org-src-fontify-natively t)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defface org-block-begin-line
+    '((t (:underline "#6CA0A3" :foreground "#DCDCCC" :background "#5F5F5F")))
+    "Face used for the line delimiting the begin of source blocks.")
+
+;; Doesn't work, see note.
+(defface org-block-background
+    '((t (:background "#4F4F4F")))
+    "Face used for the source block background.")
+
+(defface org-block-end-line
+    '((t (:overline "#6CA0A3" :foreground "#DCDCCC" :background "#5F5F5F")))
+    "Face used for the line delimiting the end of source blocks.")
+#+END_SRC
+
+NOTE: =org-block-background= no longer works; see [[https://emacs.stackexchange.com/questions/14824/org-block-background-font-not-having-effect][here]] for more info.
+
+* Task States
+
+Documentation [[https://orgmode.org/manual/Workflow-states.html][here]].
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keywords
+  '((sequence "TODO(t)" "|" "DONE(d/!)" "CANCELLED")))
+#+END_SRC
+
+Using =org-habits= helps to track repeated tasks.
+
+#+BEGIN_SRC emacs-lisp
+(require 'org-habit)
+#+END_SRC
+
+Enable log changes in =LOGBOOK= drawer.
+
+#+BEGIN_SRC emacs-lisp
+(setq org-log-into-drawer t)
+#+END_SRC
+
+* Blog Publishing
+
+** =org2jekyll=
+
+Write blog posts in =org-mode= and publish them to a Jekyll site with =org2jekyll=.
+
+Define the following variables:
+- =org2jekyll-source-directory=: The directory where =*.org= blog posts are stored.
+- =org2jekyll-jekyll-directory=: Path to a Jekyll site.
+- =org2jekyll-posts-dir=: The directory where Jekyll posts are stored.
+
+#+BEGIN_SRC emacs-lisp
+(use-package org2jekyll
+  :ensure t
+  :defer 3
+  :config
+  (custom-set-variables '(org2jekyll-blog-author       "tminor")
+                        '(org2jekyll-source-directory  (expand-file-name "~/org/blog"))
+                        '(org2jekyll-jekyll-directory  (expand-file-name "~/blog"))
+                        '(org2jekyll-jekyll-drafts-dir "")
+                        '(org2jekyll-jekyll-posts-dir  "_posts/")
+                        '(org-publish-project-alist
+                          `(("default"
+                             :base-directory ,(org2jekyll-input-directory)
+                             :base-extension "org"
+                             ;; :publishing-directory "/ssh:user@host:~/html/notebook/"
+                             :publishing-directory ,(org2jekyll-output-directory)
+                             :publishing-function org-html-publish-to-html
+                             :headline-levels 4
+                             :section-numbers nil
+                             :with-toc nil
+                             :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>"
+                             :html-preamble t
+                             :recursive t
+                             :make-index t
+                             :html-extension "html"
+                             :body-only t)
+
+                            ("post"
+                             :base-directory ,(org2jekyll-input-directory)
+                             :base-extension "org"
+                             :publishing-directory ,(org2jekyll-output-directory org2jekyll-jekyll-posts-dir)
+                             :publishing-function org-html-publish-to-html
+                             :headline-levels 4
+                             :section-numbers nil
+                             :with-toc nil
+                             :html-head "<link href='/images/fav.png' rel='shortcut icon'>
+                                            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
+                                            <link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />"
+                             :html-preamble t
+                             :recursive t
+                             :make-index t
+                             :html-extension "html"
+                             :body-only t)
+
+                            ("images"
+                             :base-directory ,(org2jekyll-input-directory "img")
+                             :base-extension "jpg\\|gif\\|png"
+                             :publishing-directory ,(org2jekyll-output-directory "img")
+                             :publishing-function org-publish-attachment
+                             :recursive t)
+
+                            ("js"
+                             :base-directory ,(org2jekyll-input-directory "js")
+                             :base-extension "js"
+                             :publishing-directory ,(org2jekyll-output-directory "js")
+                             :publishing-function org-publish-attachment
+                             :recursive t)
+
+                            ("css"
+                             :base-directory ,(org2jekyll-input-directory "css")
+                             :base-extension "css\\|el"
+                             :publishing-directory ,(org2jekyll-output-directory "css")
+                             :publishing-function org-publish-attachment
+                             :recursive t)
+
+                            ("web" :components ("images" "js" "css"))))))
+#+END_SRC
+
+** Creating a Blog Post
+
+1. Invoke =org2jekyll-create-draft=, select your layout and follow the prompts in the mini buffer.
+2. Write your post.
+3. Publish it with =org2jekyll-publish=.
