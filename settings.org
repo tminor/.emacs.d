@@ -118,7 +118,7 @@ Reference for everything below found [[http://manuel-uberti.github.io/emacs/2017
 Set =/bin/bash= as the default shell.
 
 #+BEGIN_SRC emacs-lisp
-(setq explicit-shell-file-name "/bin/bash")
+;;(setq explicit-shell-file-name "/bin/bash")
 #+END_SRC
 
 Better history.
