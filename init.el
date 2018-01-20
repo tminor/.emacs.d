@@ -30,54 +30,6 @@
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
- '(org-publish-project-alist
-   (\`
-    (("default" :base-directory
-      (\,
-       (org2jekyll-input-directory))
-      :base-extension "org" :publishing-directory
-      (\,
-       (org2jekyll-output-directory))
-      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link rel=\"stylesheet\" href=\"./css/style.css\" type=\"text/css\"/>" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
-     ("post" :base-directory
-      (\,
-       (org2jekyll-input-directory))
-      :base-extension "org" :publishing-directory
-      (\,
-       (org2jekyll-output-directory org2jekyll-jekyll-posts-dir))
-      :publishing-function org-html-publish-to-html :headline-levels 4 :section-numbers nil :with-toc nil :html-head "<link href='/images/fav.png' rel='shortcut icon'>
-                                            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
-                                            <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' />
-                                            <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' />
-                                            <link href='/stylesheets/responsive.css' rel='stylesheet' type='text/css' />" :html-preamble t :recursive t :make-index t :html-extension "html" :body-only t)
-     ("images" :base-directory
-      (\,
-       (org2jekyll-input-directory "img"))
-      :base-extension "jpg\\|gif\\|png" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "img"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("js" :base-directory
-      (\,
-       (org2jekyll-input-directory "js"))
-      :base-extension "js" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "js"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("css" :base-directory
-      (\,
-       (org2jekyll-input-directory "css"))
-      :base-extension "css\\|el" :publishing-directory
-      (\,
-       (org2jekyll-output-directory "css"))
-      :publishing-function org-publish-attachment :recursive t)
-     ("web" :components
-      ("images" "js" "css")))))
- '(org2jekyll-blog-author "tminor" nil (org2jekyll))
- '(org2jekyll-jekyll-directory (expand-file-name "~/blog") nil (org2jekyll))
- '(org2jekyll-jekyll-drafts-dir "" nil (org2jekyll))
- '(org2jekyll-jekyll-posts-dir "_posts/" nil (org2jekyll))
- '(org2jekyll-source-directory (expand-file-name "~/org/blog") nil (org2jekyll))
  '(package-selected-packages
    (quote
     (hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
