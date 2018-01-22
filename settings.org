@@ -22,10 +22,14 @@ NOTE: For Windows, you'll need GnuTLS DLLs. (Emacs for Windows isn't built with 
 Instructions found [[http://חנוך.se/diary/how_to_enable_GnuTLS_for_Emacs_24_on_Windows/index.en.html][here]].
 
 This snippet enables all necessary repositories on start up.
+Added org ELPA to get all of the nice =org-contrib= packages that I may someday want.
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives
      '("melpa" . "https://melpa.org/packages/") t)
+
+(add-to-list 'package-archives
+     '("org" . "http://orgmode.org/elpa/") t)     
 #+END_SRC
 
 ** =use-package= Bootsrap
@@ -55,9 +59,9 @@ If you need descriptions for any of these, just check each file for more info.
  (expand-file-name "org-mode.org"
                    user-emacs-directory))
 
-(org-babel-load-file 
- (expand-file-name "hydra.org"
-                   user-emacs-directory))
+;;(org-babel-load-file 
+;; (expand-file-name "hydra.org"
+;;                   user-emacs-directory))
 #+END_SRC
 
 * Modifications to Core Emacs Functionality
