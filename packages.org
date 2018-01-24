@@ -78,10 +78,10 @@ possivle key chord completion given at least one key press.
 I found out about it [[http://cestlaz.github.io/posts/using-emacs-1-setup/#.Wb03a44pCfU][here]].
 
 #+BEGIN_SRC emacs-lisp
-;;(use-package which-key
-;;  :ensure t 
-;;  :config
-;;  (which-key-mode))
+(use-package which-key
+  :ensure t 
+  :config
+  (which-key-mode))
 #+END_SRC
 
 ** Rainbow Mode 
