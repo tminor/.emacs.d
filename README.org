@@ -1,3 +1,21 @@
-* Place holder
 
-TODOs should go here.
+* Emacs Configuration
+
+I've been using Emacs somewhat consistently for about 2 months now.
+Previously, I struggled with how to manage my =.emacs.d= suff, and
+became easily overwhelmed once I'd added a few packages and any
+configurations that went along with them.
+
+I stumbled across several *good* =.emacs.d= examples and stole some
+ideas and amalgamated them into something that worked for me. When I
+use the term /work/, I mean that they are organized in a more coherent
+way that allows me to make changes to them in a somewhat consistent way.
+
+Maybe someday I'll understand how to work with dependencies and how
+Emacs does its initialization magic, but for now it works well enough.
+
+* References
+
+[[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's config]]
+[[https://github.com/larstvei/dot-emacs/blob/master/init.org][This config file]]
+[[https://github.com/howardabrams/dot-files][Howard Abrams's config]]
