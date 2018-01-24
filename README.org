@@ -16,6 +16,8 @@ Emacs does its initialization magic, but for now it works well enough.
 
 * References
 
-[[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's config]]
-[[https://github.com/larstvei/dot-emacs/blob/master/init.org][This config file]]
+[[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's config
+]]
+[[https://github.com/larstvei/dot-emacs/blob/master/init.org][This config file
+]]
 [[https://github.com/howardabrams/dot-files][Howard Abrams's config]]
