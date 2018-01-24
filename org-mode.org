@@ -126,7 +126,7 @@ Documentation [[https://orgmode.org/manual/Workflow-states.html][here]].
 
 #+BEGIN_SRC emacs-lisp
 (setq org-todo-keywords
-  '((sequence "TODO(t)" "|" "DONE(d/!)" "CANCELLED")))
+  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d/!)" "CANCELLED")))
 #+END_SRC
 
 Using =org-habits= helps to track repeated tasks.
