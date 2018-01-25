@@ -60,6 +60,10 @@ Define capture templates here. I found [[https://orgmode.org/manual/Capture-temp
                "* %?\n%U\n")
               )))
 #+END_SRC
+** Food for Thought
+
+I found a [[https://mollermara.com/blog/Fast-refiling-in-org-mode-with-hydras/][blog post]] about more efficient refiling with =hydra=.
+I should look into it at some point and use it!
 
 * =org-agenda=
 
