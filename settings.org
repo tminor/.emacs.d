@@ -93,6 +93,12 @@ and the fixed width of the line number column cuts it off. I found a post
 (set-face-attribute 'linum nil :height 100)
 #+END_SRC
 
+Turn on current line highlighting globally:
+
+#+BEGIN_SRC emacs-lisp
+(global-hl-line-mode +1)
+#+END_SRC
+
 ** Interface
 
 Disable the scroll bar by default.
