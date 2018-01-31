@@ -94,7 +94,7 @@ representation of colors.
   :ensure t)
 #+END_SRC
 
-* Language Specific
+* Writing Code
 
 ** PowerShell
 
@@ -133,7 +133,6 @@ NOTE: Don't forget to install =virtualenv= (=$ pip install virtualenv=) and run 
   :config
     (defun my/python-mode-hook ()
       (add-to-list 'company-backends 'company-jedi))
-
     (add-hook 'python-mode-hook 'my/python-mode-hook))
 #+END_SRC
 
@@ -150,4 +149,15 @@ Find more documentation [[https://github.com/Alexander-Miller/company-shell][her
     (add-to-list 'company-backends 
                  '(company-shell company-shell-env company-fish-shell))
     (setq company-shell-clean-manpage t))
+#+END_SRC
+
+** =rainbow-delimiters=
+
+This makes hunting down paren pairs easier in Elisp:
+
+#+BEGIN_SRC emacs-lisp
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+    (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 #+END_SRC
