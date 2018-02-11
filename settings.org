@@ -1,21 +1,6 @@
 
 * Package Management
 
-** Initialization stuff
-
-You can find an explanation for the following [[https://emacs.stackexchange.com/questions/22717/what-does-require-package-mean-for-emacs-and-how-does-it-differ-from-load-fil][here]]. Ensure that Emacs's package management package is loaded.
-
-#+BEGIN_SRC emacs-lisp
-(require 'package)
-#+END_SRC
-
-Explanation [[https://www.reddit.com/r/emacs/comments/1rdstn/set_packageenableatstartup_to_nil_for_slightly/][here]].
-
-#+BEGIN_SRC emacs-lisp
-(package-initialize)
-(setq package-enable-at-startup nil)
-#+END_SRC
-
 ** Repository Management
 
 NOTE: For Windows, you'll need GnuTLS DLLs. (Emacs for Windows isn't built with TLS support.)
