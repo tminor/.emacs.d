@@ -5,6 +5,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+(require 'package)
 (package-initialize)
 
 (require 'org)
@@ -32,7 +33,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
+    (evil-org hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
