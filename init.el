@@ -7,6 +7,7 @@
 ;; You may delete these explanatory comments.
 (require 'package)
 (package-initialize)
+(setq package-enable-at-startup nil)
 
 (require 'org)
 (org-babel-load-file
