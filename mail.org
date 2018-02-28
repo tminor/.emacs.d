@@ -66,6 +66,36 @@ And the key for the tagging menu defined:
 
 For more Emacs =notmuch= customizaton, see [[https://wwwtech.de/articles/2016/jul/my-personal-mail-setup][this]] nice blog post.
 
+* Org, HTML, etc.
+
+** org-mime.el
+
+#+BEGIN_SRC emacs-lisp
+(use-package htmlize
+  :ensure t)
+
+(use-package org-mime
+  :ensure t)
+
+(require 'org-mime)
+#+END_SRC
+
+Create a hook for HTMLizing org in =message-mode=.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'message-mode-hook
+          (lambda ()
+            (local-set-key "\C-c\M-o" 'org-mime-htmlize)))
+#+END_SRC
+
+** org-struct minor mode
+
+=org-struct= provides org structure editing in other modes. Here's a hook for =message-mode=:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'message-mode-hook 'turn-on-orgstruct++)
+#+END_SRC
+
 * =notmuch=
 
 Some =notmuch= variables.
@@ -75,7 +105,7 @@ Some =notmuch= variables.
 Use =notmuch-insert= to put sent mail in the specified directory and add the =sent= tag.
 
 #+BEGIN_SRC emacs-lisp
-(setq notmuch-fcc-dirs "gmail/Sent +sent -new"
+(setq notmuch-fcc-dirs "work/Sent +sent -new"
       notmuch-maildir-use-notmuch-insert t)
 #+END_SRC
 
