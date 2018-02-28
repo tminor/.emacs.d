@@ -36,6 +36,24 @@ Store our favorite Org files in registers.
 (set-register ?w (cons 'file "~/org/work/organizer.org"))
 #+END_SRC
 
+** =evil-org-mode=
+
+=org-agenda= uses normal Emacs keybindings for cursor movement
+and I occasionally paste whatever's on the clipboard when trying
+to navigate to the previous line. =evil-org-mode= allows me to
+use =vi= style cursor movement and navigation.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme))))
+#+END_SRC
+
 * =org-capture=
 
 Specify the primary capture file (I only use one).
