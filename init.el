@@ -50,8 +50,11 @@
  '(package-selected-packages
    (quote
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     (evil-org hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil))))
 =======
+=======
+>>>>>>> Stashed changes
     (org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
@@ -75,6 +78,9 @@
      (340 . "#FFA000")
      (360 . "#558b2f"))))
  '(vc-annotate-very-old-color nil))
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
