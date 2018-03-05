@@ -109,4 +109,21 @@ Use =notmuch-insert= to put sent mail in the specified directory and add the =se
       notmuch-maildir-use-notmuch-insert t)
 #+END_SRC
 
- 
+** notmuch variables
+
+#+BEGIN_SRC emacs-lisp
+(setq notmuch-search-oldest-first nil
+      message-kill-buffer-on-exit t
+      notmuch-show-indent-messages-width 4)
+#+END_SRC
+
+* =message-mode=
+
+Sometimes we'll want to turn off auto-fill-mode because it does weird things
+in =message-mode=. Here's a workaround:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'notmuch-message-mode-hook
+          '(lambda ()
+             (local-set-key "\C-cd" 'auto-fill-mode)))
+#+END_SRC 
