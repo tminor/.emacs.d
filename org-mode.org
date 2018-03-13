@@ -104,6 +104,12 @@ schedule a task, hiding them helps to keep the global list cleaner.
 (setq org-agenda-todo-ignore-scheduled t)
 #+END_SRC
 
+=org-agenda= destroys window layouts. Fix it:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-window-setup 'current-window)
+#+END_SRC
+
 * =org-refile=
 
 For =org-refile=, we want our refile targets to be our main =org= files.
