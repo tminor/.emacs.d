@@ -229,11 +229,11 @@ Use neotree with some =evil-mode= stuff.
         ([f8]         . treemacs-toggle)
         ("M-0"        . treemacs-select-window)
         ("C-c 1"      . treemacs-delete-other-windows)
-        ("M-m ft"     . treemacs-toggle)
-        ("M-m fT"     . treemacs)
-        ("M-m fB"     . treemacs-bookmark)
-        ("M-m f C-t"  . treemacs-find-file)
-        ("M-m f M-t"  . treemacs-find-tag)))
+        ("M-n Ft"     . treemacs-toggle)
+        ("M-n fT"     . treemacs)
+        ("M-n fB"     . treemacs-bookmark)
+        ("M-n f C-t"  . treemacs-find-file)
+        ("M-n f M-t"  . treemacs-find-tag)))
 
 (use-package treemacs-projectile
   :defer t
@@ -241,7 +241,7 @@ Use neotree with some =evil-mode= stuff.
   :config
   (setq treemacs-header-function #'treemacs-projectile-create-header)
   :bind (:map global-map
-              ("M-m fP" . treemacs-projectile)
-              ("M-m fp" . treemacs-projectile-toggle)))
+              ("M-n fP" . treemacs-projectile)
+              ("M-n fp" . treemacs-projectile-toggle)))
 #+END_SRC
 
