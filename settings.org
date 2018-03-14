@@ -136,3 +136,14 @@ Full window when invoking =shell-mode=.
    ;; … other stuff …
   ))
 #+END_SRC
+
+** Window Management
+
+I looked up many potential solutions for this issue but haven't really found one that I liked.
+Ultimately, the goal is to save window layouts and restore them with key bindings. I found
+[[https://oremacs.com/2016/06/27/ivy-push-view/][this]] which points out that =ivy= provides this functionality.
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c v") 'ivy-push-view)
+(global-set-key (kbd "C-c V") 'ivy-pop-view)
+#+END_SRC
