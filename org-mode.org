@@ -251,3 +251,38 @@ Define the following variables:
 1. Invoke =org2jekyll-create-draft=, select your layout and follow the prompts in the mini buffer.
 2. Write your post.
 3. Publish it with =org2jekyll-publish=.
+
+* Org Packages
+
+#+BEGIN_SRC emacs-lisp
+(use-package org-pomodoro 
+  :ensure t
+  :init
+    ;; Needs terminal-notifier (brew install terminal-notifier)
+    (defun notify-osx (title message)
+    (call-process "terminal-notifier"
+                    nil 0 nil
+                    "-group" "Emacs"
+                    "-title" title
+                    "-sender" "org.gnu.Emacs"
+                    "-message" message
+                    "-sound" "Sosumi"))
+
+    ;; org-pomodoro mode hooks
+    (add-hook 'org-pomodoro-finished-hook
+            (lambda ()
+            (notify-osx "Pomodoro completed!" "Time for a break.")))
+
+    (add-hook 'org-pomodoro-break-finished-hook
+            (lambda ()
+            (notify-osx "Pomodoro Short Break Finished" "Ready for Another?")))
+
+    (add-hook 'org-pomodoro-long-break-finished-hook
+            (lambda ()
+            (notify-osx "Pomodoro Long Break Finished" "Ready for Another?")))
+
+    (add-hook 'org-pomodoro-killed-hook
+            (lambda ()
+            (notify-osx "Pomodoro Killed" "One does not simply kill a pomodoro!")))
+  :bind ([f12] . org-pomodoro))
+#+END_SRC
