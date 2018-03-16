@@ -146,4 +146,5 @@ Ultimately, the goal is to save window layouts and restore them with key binding
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c v") 'ivy-push-view)
 (global-set-key (kbd "C-c V") 'ivy-pop-view)
+(global-set-key (kbd "C-c s") 'ivy-switch-view)
 #+END_SRC
