@@ -27,6 +27,9 @@
  '(custom-safe-themes
    (quote
     ("cc60d17db31a53adf93ec6fad5a9cfff6e177664994a52346f81f62840fe8e23" "6dd2b995238b4943431af56c5c9c0c825258c2de87b6c936ee88d6bb1e577cb9" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "554b7f0439155d6eb648d4837ef03902f51124cacee021217e76f39e9dd314c2" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "bcc6775934c9adf5f3bd1f428326ce0dcd34d743a92df48c128e6438b815b44f" "5e52ce58f51827619d27131be3e3936593c9c7f9f9f9d6b33227be6331bf9881" default)))
+ '(excorporate-configuration
+   (quote
+    ("thomas.minor@usg.edu" . "https://outlook.office365.com/EWS/Exchange.asmx")))
  '(fci-rule-color "#3E4451")
  '(hl-sexp-background-color "#1c1f26")
  '(jdee-db-active-breakpoint-face-colors (cons "#2b2a27" "#ff5d38"))
@@ -41,6 +44,7 @@
  '(package-selected-packages
    (quote
     (excorporate org-pomodoro treemacs-evil treemacs-projectile treemacs neotree eproject cherry-blossom-theme atom-one-dark-theme evil-org org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
+ '(treemacs-git-mode (quote extended))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
