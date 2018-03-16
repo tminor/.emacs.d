@@ -40,7 +40,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (treemacs-evil treemacs-projectile treemacs neotree eproject cherry-blossom-theme atom-one-dark-theme evil-org org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
+    (excorporate org-pomodoro treemacs-evil treemacs-projectile treemacs neotree eproject cherry-blossom-theme atom-one-dark-theme evil-org org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
