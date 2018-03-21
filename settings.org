@@ -44,9 +44,9 @@ If you need descriptions for any of these, just check each file for more info.
  (expand-file-name "org-mode.org"
                    user-emacs-directory))
 
-;;(org-babel-load-file 
-;; (expand-file-name "hydra.org"
-;;                   user-emacs-directory))
+(org-babel-load-file 
+ (expand-file-name "hydra.org"
+                   user-emacs-directory))
 #+END_SRC
 
 * Modifications to Core Emacs Functionality
@@ -147,6 +147,29 @@ Ultimately, the goal is to save window layouts and restore them with key binding
 (global-set-key (kbd "C-c v") 'ivy-push-view)
 (global-set-key (kbd "C-c V") 'ivy-pop-view)
 (global-set-key (kbd "C-c s") 'ivy-switch-view)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(notmuch)
+(switch-to-buffer-other-window "*notmuch*")
+
+(org-agenda)
+(switch-to-buffer-other-window "*Org Agenda*")
+#+END_SRC
+
+Try to set values for =ivy-views=:
+
+#+BEGIN_SRC emacs-lisp
+(setq ivy-views '(("{} *Org Agenda* *notmuch-hello* *scratch*"
+  (horz
+   (buffer "*scratch*" 146)
+   (vert
+    (buffer "*notmuch-hello*" 1)
+    (buffer "*Org Agenda*" 1))))))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(winner-mode 1)
 #+END_SRC
 
 ** Themes
