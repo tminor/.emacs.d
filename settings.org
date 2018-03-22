@@ -27,6 +27,15 @@ We use =use-package= for package management and configuration. See =packages.org
   (package-install 'use-package))
 #+END_SRC
 
+** Load Path
+
+Lisp stuff not in a repo or (in the future) written by me:
+
+#+BEGIN_SRC emacs-lisp
+(let ((default-directory  "~/.emacs.d/lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
+#+END_SRC
+
 * Init File Include Statements
 
 If you need descriptions for any of these, just check each file for more info.
@@ -177,4 +186,35 @@ Try to set values for =ivy-views=:
 #+BEGIN_SRC emacs-lisp
 (use-package cherry-blossom-theme
   :ensure t)
+#+END_SRC
+
+** eshell
+
+#+BEGIN_SRC emacs-lisp
+;;(use-package esh-autosuggest
+  ;;:hook (eshell-mode . esh-autosuggest-mode)
+  ;; If you have use-package-hook-name-suffix set to nil, uncomment and use the
+  ;; line below instead:
+  ;; :hook (eshell-mode-hook . esh-autosuggest-mode)
+;;  :ensure nil)
+#+END_SRC
+
+** Emacs Fish Completion
+
+This works... but I really dislike the fact that it opens auto
+complete suggestions in a separate buffer.
+
+#+BEGIN_SRC emacs-lisp
+(when (and (executable-find "fish")
+           (require 'fish-completion nil t))
+  (global-fish-completion-mode))
+#+END_SRC
+
+** Shell mode and term mode stuff
+
+=shell-mode= and =term-mode=, etc. really don't like fish. Set bash as
+the default shell executable:
+
+#+BEGIN_SRC emacs-lisp
+(setq explicit-shell-file-name "/bin/bash")
 #+END_SRC
