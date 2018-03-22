@@ -18,6 +18,14 @@ I'm accustomed to =vi= style text editing, so we make Emacs like
   (evil-mode 1))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+    (evil-collection-init))
+#+END_SRC
+
 * Window, Buffer, and Frame Management
 
 ** Window
@@ -94,6 +102,17 @@ representation of colors.
   :ensure t)
 #+END_SRC
 
+** Speed Typing
+
+I need to be better at typing...
+
+#+BEGIN_SRC emacs-lisp
+(use-package speed-type
+  :ensure t
+  :config
+    (setq speed-type--gb-url-format
+      "http://www.gutenberg.org/cache/epub/%d/pg%d.txt"))
+#+END_SRC
 * Writing Code
 
 ** PowerShell
