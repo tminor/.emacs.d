@@ -93,6 +93,14 @@ Turn on current line highlighting globally:
 (global-hl-line-mode +1)
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(use-package highlight-indent-guides
+  :ensure t
+  :init
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+  (setq highlight-indent-guides-method 'column))
+#+END_SRC
+
 ** Interface
 
 Disable the scroll bar by default.
