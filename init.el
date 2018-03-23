@@ -43,7 +43,7 @@
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(package-selected-packages
    (quote
-    (speed-type excorporate org-pomodoro treemacs-evil treemacs-projectile treemacs neotree eproject cherry-blossom-theme atom-one-dark-theme evil-org org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
+    (highlight-indent-guides speed-type excorporate org-pomodoro treemacs-evil treemacs-projectile treemacs neotree eproject cherry-blossom-theme atom-one-dark-theme evil-org org-mime rainbow-delimiters powershell hydra rainbow-mode magit material-theme hc-zenburn-theme ivy ace-window framemove zenburn-theme auctex elpy use-package evil)))
  '(show-paren-mode t)
  '(treemacs-git-mode (quote extended))
  '(vc-annotate-background nil)
