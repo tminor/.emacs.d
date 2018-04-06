@@ -1,0 +1,3 @@
+[submodule "lisp/orgmode-mediawiki"]
+	path = lisp/orgmode-mediawiki
+	url = https://github.com/tomalexander/orgmode-mediawiki.git
