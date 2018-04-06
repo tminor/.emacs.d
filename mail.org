@@ -114,7 +114,8 @@ Use =notmuch-insert= to put sent mail in the specified directory and add the =se
 #+BEGIN_SRC emacs-lisp
 (setq notmuch-search-oldest-first nil
       message-kill-buffer-on-exit t
-      notmuch-show-indent-messages-width 4)
+      notmuch-show-indent-messages-width 4
+      notmuch-multipart/alternative-discouraged '("text/plain" "text/html"))
 #+END_SRC
 
 * =message-mode=
