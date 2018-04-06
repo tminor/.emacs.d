@@ -58,6 +58,10 @@ If you need descriptions for any of these, just check each file for more info.
                    user-emacs-directory))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(load "~/.emacs.d/lisp/jabber.el")
+#+END_SRC
+
 * Modifications to Core Emacs Functionality
 
 Here we'll change the default behaviors of Emacs.
