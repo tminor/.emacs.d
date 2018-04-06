@@ -259,3 +259,10 @@ Define the following variables:
   :ensure t
   :bind ([f12] . org-pomodoro))
 #+END_SRC
+
+** orgmode-mediawiki
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/lisp/orgmode-mediawiki")
+(require 'ox-mediawiki)
+#+END_SRC
