@@ -68,16 +68,19 @@ Define capture templates here. I found [[https://orgmode.org/manual/Capture-temp
 
 #+BEGIN_SRC emacs-lisp
 (setq org-capture-templates
-      (quote (("t" "todo" entry (file (concat org-directory "/capture.org"))
-               "* TODO %?\n%U\n%a\n")
-              ("n" "note" entry (file (concat org-directory "/capture.org"))
-               "* %? :NOTE:\n%U\n%a\n")
-              ("p" "Personal Journal" entry (file+datetree (concat org-directory "/personal/journal.org"))
-               "* %?\n%U\n")
-              ("w" "Work Journal" entry (file+datetree (concat org-directory "/work/journal.org"))
-               "* %?\n%U\n")
+      (quote (("s" "Stuff" entry (file (concat org-directory "/capture.org"))
+                "* STUFF %?\n%U\n%a\n")
+              ;;("t" "todo" entry (file (concat org-directory "/capture.org"))
+              ;; "* TODO %?\n%U\n%a\n")
+              ;;("n" "note" entry (file (concat org-directory "/capture.org"))
+              ;; "* %? :NOTE:\n%U\n%a\n")
+              ;;("p" "Personal Journal" entry (file+datetree (concat org-directory "/personal/journal.org"))
+              ;; "* %?\n%U\n")
+              ;;("w" "Work Journal" entry (file+datetree (concat org-directory "/work/journal.org"))
+              ;; "* %?\n%U\n")
               )))
 #+END_SRC
+
 ** Food for Thought
 
 I found a [[https://mollermara.com/blog/Fast-refiling-in-org-mode-with-hydras/][blog post]] about more efficient refiling with =hydra=.
@@ -93,8 +96,13 @@ that contain our main =org= files.
 #+BEGIN_SRC emacs-lisp
 (setq org-base-directory "~/org/")
 
-(setq org-agenda-files (list (concat org-base-directory "work")
-			     (concat org-base-directory "personal")))
+(setq org-agenda-files '("~/org/projects.org"
+                         "~/org/capture.org"
+                         "~/org/someday.org"
+                         "~/org/calendar.org"))
+
+;; (list (concat org-base-directory "work")
+;;			     (concat org-base-directory "personal")))
 #+END_SRC
 
 The global TODO list helps to see all open, unscheduled tasks. Once we
@@ -108,6 +116,33 @@ schedule a task, hiding them helps to keep the global list cleaner.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-agenda-window-setup 'current-window)
+#+END_SRC
+
+** Agenda custom views
+
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-custom-commands
+      (quote (("N" "Notes" tags "NOTE"
+               ((org-agenda-overriding-header "Notes")
+                (org-tags-match-list-sublevels t)))
+              ("h" "Habits" tags-todo "STYLE=\"habit\""
+               ((org-agenda-overriding-header "Habits")
+                (org-agenda-sorting-strategy
+                 '(todo-state-down effort-up category-keep))))
+              ("n" "Agenda"
+               ((agenda "" nil)
+                (tags "STUFF"
+                      ((org-agenda-overriding-header "Stuff to Refile")
+                       (org-tags-match-list-sublevels nil)))
+                (tags-todo "-CANCELLED/!NEXT"
+                           ((org-agenda-overriding-header "Tasks to Complete Next")
+                            (org-tags-match-list-sublevels t)
+                            (org-agenda-sorting-strategy
+                             '(todo-state-down effort-up category-keep))))
+                (tags-todo "-CANCELLED+WAITING|HOLD/!"
+                           ((org-agenda-overriding-header "Waiting and Postponed Tasks")
+                            (org-tags-match-list-sublevels nil))))
+               nil))))
 #+END_SRC
 
 * =org-refile=
@@ -154,7 +189,7 @@ Documentation [[https://orgmode.org/manual/Workflow-states.html][here]].
 
 #+BEGIN_SRC emacs-lisp
 (setq org-todo-keywords
-  '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d/!)" "CANCELLED")))
+  '((sequence "TODO(t)" "WAITING(w@/!)" "HOLD(h@/!)" "NEXT(n)" "STUFF(s)" "|" "DONE(d/!)" "CANCELLED(c)")))
 #+END_SRC
 
 Using =org-habits= helps to track repeated tasks.
@@ -167,6 +202,25 @@ Enable log changes in =LOGBOOK= drawer.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-log-into-drawer t)
+#+END_SRC
+
+Enable fast task state selection:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-use-fast-todo-selection t)
+#+END_SRC
+
+Task state faces:
+
+#+BEGIN_SRC emacs-lisp
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("NEXT" :foreground "blue" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("HOLD" :foreground "magenta" :weight bold)
+              ("CANCELLED" :foreground "forest green" :weight bold)
+              ("MEETING" :foreground "forest green" :weight bold))))
 #+END_SRC
 
 * Blog Publishing
