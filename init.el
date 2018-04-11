@@ -33,6 +33,9 @@
     ("thomas.minor@usg.edu" . "https://outlook.office365.com/EWS/Exchange.asmx")))
  '(fci-rule-color "#3E4451")
  '(hipchat-api-key "WjtGrA6TPfYxslQKzERldnfxR63SzZ8NZgzyVbK2")
+ '(hipchat-autojoin
+   (quote
+    ("113398_teamdownlow@conf.hipchat.com" "113398_university_system_of_georgia_board_of_regents@conf.hipchat.com")))
  '(hipchat-nickname "Thomas Minor")
  '(hl-sexp-background-color "#1c1f26")
  '(jdee-db-active-breakpoint-face-colors (cons "#2b2a27" "#ff5d38"))
@@ -41,13 +44,13 @@
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i")
-     (:name "Nagios" :query "tag:nagios and date:yesterday..now")
+     (:name "SSL Notifications" :query "tag:sslnotifications")
+     (:name "Nagios" :query "tag:problem and date:yesterday..now")
      (:name "Tenshi" :query "tag:syslog and date:yesterday..now")
      (:name "unread" :query "tag:unread" :key "u")
      (:name "flagged" :query "tag:flagged" :key "f")
      (:name "sent" :query "tag:sent" :key "t")
-     (:name "drafts" :query "tag:draft" :key "d")
-     (:name "all mail" :query "*" :key "a"))))
+     (:name "drafts" :query "tag:draft" :key "d"))))
  '(org-fontify-done-headline t)
  '(org-fontify-quote-and-verse-blocks t)
  '(org-fontify-whole-heading-line t)
