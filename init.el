@@ -44,6 +44,7 @@
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i")
+     (:name "All Mail Today" :query "date:today")
      (:name "SSL Notifications" :query "tag:sslnotifications")
      (:name "Nagios" :query "tag:problem and date:yesterday..now")
      (:name "Tenshi" :query "tag:syslog and date:yesterday..now")

@@ -69,7 +69,7 @@ Define capture templates here. I found [[https://orgmode.org/manual/Capture-temp
 #+BEGIN_SRC emacs-lisp
 (setq org-capture-templates
       (quote (("s" "Stuff" entry (file (concat org-directory "/capture.org"))
-                "* STUFF %?\n%U\n%a\n")
+                "* STUFF %?\n%U\n%f\n%a\n")
               ;;("t" "todo" entry (file (concat org-directory "/capture.org"))
               ;; "* TODO %?\n%U\n%a\n")
               ;;("n" "note" entry (file (concat org-directory "/capture.org"))
@@ -99,7 +99,8 @@ that contain our main =org= files.
 (setq org-agenda-files '("~/org/projects.org"
                          "~/org/capture.org"
                          "~/org/someday.org"
-                         "~/org/calendar.org"))
+                         "~/org/calendar.org"
+                         "~/org/notes.org"))
 
 ;; (list (concat org-base-directory "work")
 ;;			     (concat org-base-directory "personal")))
@@ -131,7 +132,7 @@ schedule a task, hiding them helps to keep the global list cleaner.
                  '(todo-state-down effort-up category-keep))))
               ("n" "Agenda"
                ((agenda "" nil)
-                (tags "STUFF"
+                (todo "STUFF"
                       ((org-agenda-overriding-header "Stuff to Refile")
                        (org-tags-match-list-sublevels nil)))
                 (tags-todo "-CANCELLED/!NEXT"
@@ -141,7 +142,10 @@ schedule a task, hiding them helps to keep the global list cleaner.
                              '(todo-state-down effort-up category-keep))))
                 (tags-todo "-CANCELLED+WAITING|HOLD/!"
                            ((org-agenda-overriding-header "Waiting and Postponed Tasks")
-                            (org-tags-match-list-sublevels nil))))
+                            (org-tags-match-list-sublevels nil)))
+                (tags "quick"
+                      ((org-agenda-overriding-header "Two Minute Tasks")
+                       (org-tags-match-list-sublevels nil))))
                nil))))
 #+END_SRC
 
@@ -153,11 +157,11 @@ We also enable some nice quality of life settings. Read more [[https://blog.aaro
 #+BEGIN_SRC emacs-lisp
 (setq org-refile-targets
       '((nil :maxlevel . 1)
-	(org-agenda-files :maxlevel . 1)))
+	  (org-agenda-files :maxlevel . 1)))
 
 (setq org-outline-path-complete-in-steps nil)
 
-(setq org-refile-use-outline-path 'full-file-path)
+(setq org-refile-use-outline-path 'file)
 #+END_SRC
 
 * Source Blocks
